@@ -20,7 +20,7 @@ router.get('/edit', function(req, res, next){
   });
 });
 
-router.get('/create', function(req, res, next){
+router.get('/create', function (req, res, next){
   client.query("select * from products", function(err, result, fields){
     if(err){
       console.log(err);
