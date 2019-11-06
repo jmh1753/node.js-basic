@@ -11,8 +11,13 @@ let client = mysql.createConnection({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { page: 'home' });
 });
+
+router.get('/login', function(req, res, next) {
+  res.render('login', { page: 'login' });
+});
+
 
 router.get('/edit', function(req, res, next){
   res.render('product/edit', {
