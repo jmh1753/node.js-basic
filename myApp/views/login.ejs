@@ -23,14 +23,38 @@
     <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js"></script>
   </body>
   <script>
-    $('#home').on('mousedown', function(e){
+    $(document).ready(function(){
+      $('#login').addClass('active');
+
+      $('#home').on('mousedown', function(e){
       e.preventDefault();
+      $('.navclass').removeClass('active')
+      $('#home').addClass('active');
       window.location.assign("/");
     });
 
     $('#login').on('mousedown', function(e){
       e.preventDefault();
+      $('.navclass').removeClass('active')
+      $('#login').addClass('active');
       window.location.assign("/login");
     });
+
+    $('#join').on('mousedown', function(e){
+      e.preventDefault();
+      $('.navclass').removeClass('active')
+      $('#join').addClass('active');
+      window.location.assign("/join");
+    });
+
+    $('#fileupload').on('mousedown', function(e){
+      e.preventDefault();
+      $('.navclass').removeClass('active')
+      $('#fileupload').addClass('active');
+      window.location.assign("/fileupload");
+    });
+
+    });
+    
   </script>
 </html>

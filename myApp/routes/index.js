@@ -18,6 +18,14 @@ router.get('/login', function(req, res, next) {
   res.render('login', { page: 'login' });
 });
 
+router.get('/join', function(req, res, next) {
+  res.render('join', { page: 'join' });
+});
+
+router.get('/fileupload', function(req, res, next) {
+  res.render('fileupload', { page: 'fileupload' });
+});
+
 
 router.get('/edit', function(req, res, next){
   res.render('product/edit', {
