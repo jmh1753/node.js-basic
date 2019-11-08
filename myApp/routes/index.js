@@ -2,11 +2,9 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 
-let client = mysql.createConnection({
-  user: "root",
-  password: "wjdansgh1!",
-  database: "mysqltest"
-})
+//DB
+let database_query = require('./Database/database_query');
+
 
 
 /* GET home page. */
@@ -33,27 +31,26 @@ router.get('/edit', function(req, res, next){
   });
 });
 
-router.get('/create', function (req, res, next){
-  client.query("select * from products", function(err, result, fields){
-    if(err){
-      console.log(err);
-      console.log("쿼리문에 오류가 있습니다.");
-    }else{
-      res.render('create', {
-        results : result
-      });
-    }
+
+router.post('/test1234', async(req, res)=>{
+  const test1234 = await database_query.test(test);
+
+  //ex1
+  res.render('test/test/test', {
+    'message' : test1234
   });
+
+  //ex2
+  res.send('success');
+
+  //ex3
+  res.json({
+    '1' : '1',
+    'message' : test1234,
+    '3' : '3'
+  });
+
 });
 
-router.post('/create', function(req, res, next){
-  var body = req.body;
-
-  client.query("insert into products(name, modelnumber, series) values(?,?,?)", [
-    body.name, body.modelnumber, body.series
-  ], function(){
-    res.redirect("/create");
-  });         
-});
 
 module.exports = router;
