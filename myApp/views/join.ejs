@@ -11,6 +11,52 @@
   <body>
     <% include ./headers/header%>
 
+    <article class="container">
+  
+        <div class="col-sm-6 col-md-offset-3">
+        
+            <div class="form-group">
+                <label for="inputId">아이디</label>
+                <input type="text" class="form-control" id="id" placeholder="아이디를 입력해 주세요">
+            </div>
+            <div class="form-group">
+                <label for="inputName">이름</label>
+                <input type="text" class="form-control" id="name" placeholder="이름을 입력해주세요">
+            </div>
+            <div class="form-group">
+                <label for="inputPhone">폰번호</label>
+                <input type="tel" class="form-control" id="phone" placeholder="폰번호를 입력해주세요">
+            </div>
+            <div class="form-group">
+                <label for="inputBirth">생일</label>
+                <input type="text" class="form-control" id="birth" placeholder="생일을 입력해 주세요">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">주소</label>
+                <input type="text" class="form-control" id="address" placeholder="주소를 입력해 주세요">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">비밀번호</label>
+                <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력해 주세요">
+            </div>
+            <div class="form-group">
+                <label for="inputPasswordCheck">비밀번호 확인</label>
+                <input type="password" class="form-control" id="passwordCheck" placeholder="비밀번호를 입력해 주세요">
+            </div>
+
+
+            <div class="form-group text-center">
+                <button type="button" onclick="join_click()" class="btn btn-primary">
+                    회원가입<i class="fa fa-check spaceLeft"></i>
+                </button>
+            </div>
+       
+        </div>
+
+    </article>
+
+
+
 
 
 
@@ -22,6 +68,7 @@
     <!-- 부트스트랩 -->
     <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js"></script>
   </body>
+
   <script>
     $(document).ready(function(){
       $('#join').addClass('active');
@@ -56,5 +103,33 @@
 
     });
     
+
+    join_click = () =>{
+      let id = $('#id').val();
+      let name = $('#name').val();
+      let phone = $('#phone').val();
+      let birth = $('#birth').val();
+      let address = $('#address').val();
+      let password = $('#password').val();
+      let passwordCheck = $('#passwordCheck').val();
+
+      let sendData = {'id':id, 'name':name, 'phone':phone, 'birth':birth, 'address':address, 'password':password, 'passwordCheck':passwordCheck};
+      $.ajax({
+        url: "./join",
+        type: "post",
+        dataType: "json",
+        data: sendData,
+        success: function(data){
+          console.log('data : ' + data);
+          alert(data);
+        },
+        error: function (request, status, error){        
+          console.log('request : ' + request);
+          console.log('status : ' + status);
+          console.log('error : ' + error);
+        }
+      });
+    }
+
   </script>
 </html>

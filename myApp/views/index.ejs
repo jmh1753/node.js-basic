@@ -10,6 +10,30 @@
   </head>
   <body>
     <% include ./headers/header%>
+    <h3>1.회원가입한 사람</h3>
+    <% if(memberAll.length == '0'){ %>
+      <h4>사람이 없음</h4>
+    <% } else { %>
+    <table class="table">
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>phone</th>
+        <th>birth</th>
+        <th>address</th>
+      </tr>
+      <% for(let i=0; i<memberAll.length; i++){ %>
+      <tr>
+        <td><%= memberAll[i].id %></td>
+        <td><%= memberAll[i].name %></td>
+        <td><%= memberAll[i].phone %></td>
+        <td><%= memberAll[i].birth %></td>
+        <td><%= memberAll[i].address %></td>
+      </tr>
+      <% } %>
+    </table>  
+    <% } %>
+
 
 
 
