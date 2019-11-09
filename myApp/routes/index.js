@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
+
 //DB
 let database_query = require('./Database/database_query');
 
@@ -28,9 +29,9 @@ router.get('/join', async(req, res, next) => {
 router.post('/join', async(req, res, next) =>{
   //사용자가 입력한 값(id) db에서 중복검사
   let idCheck = await database_query.idCheck(req.body.id);
-  console.log('idCheck : ' + idCheck);
+
   if(idCheck == '0'){
-    let memberJoin = await database_query.memberJoin(req.body);
+    await database_query.memberJoin(req.body);
     res.send({result:'회원가입 성공'});
   }else{
     console.log('else부분');

@@ -105,6 +105,7 @@
     
 
     join_click = () =>{
+
       let id = $('#id').val();
       let name = $('#name').val();
       let phone = $('#phone').val();
@@ -112,23 +113,36 @@
       let address = $('#address').val();
       let password = $('#password').val();
       let passwordCheck = $('#passwordCheck').val();
-
       let sendData = {'id':id, 'name':name, 'phone':phone, 'birth':birth, 'address':address, 'password':password, 'passwordCheck':passwordCheck};
-      $.ajax({
-        url: "./join",
-        type: "post",
-        dataType: "json",
-        data: sendData,
-        success: function(data){
-          console.log('data : ' + data);
-          alert(data);
-        },
-        error: function (request, status, error){        
-          console.log('request : ' + request);
-          console.log('status : ' + status);
-          console.log('error : ' + error);
+
+      if(id=="" || name=="" || phone=="" || birth=="" || address=="" || password=="" || passwordCheck==""){
+        alert("모든 항목을 작성해주세요");
+      } else{
+        if(password == passwordCheck){
+          $.ajax({
+            url: "./join",
+            type: "post",
+            dataType: "json",
+            data: sendData,
+            success: function(data){
+              console.log('data : ' + data);
+              alert(data);
+            },
+            error: function (request, status, error){        
+              console.log('request : ' + request);
+              console.log('status : ' + status);
+              console.log('error : ' + error);
+            }
+          });
+        }else{
+          alert("비밀번호가 일치하지 않습니다.");
+          $('#passwordCheck').focus();
         }
-      });
+        
+      }
+
+
+      
     }
 
   </script>
