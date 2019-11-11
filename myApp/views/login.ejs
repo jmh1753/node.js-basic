@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= page %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- 부트스트랩 -->
-    <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.css"/>
-  </head>
-  <body>
-    <% include ./headers/header%>
 
-    <div class="container">
+  <div class="container">
       <div class="row">
           <div class="col-sm-5">
 
@@ -35,49 +23,38 @@
   </div>
 
 
-
-
-
-
-
-
-
-    <!-- 부트스트랩 -->
-    <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js"></script>
-  </body>
   <script>
     $(document).ready(function(){
+      $('.navclass').removeClass('active');
       $('#login').addClass('active');
 
-      $('#home').on('mousedown', function(e){
-      e.preventDefault();
-      $('.navclass').removeClass('active')
-      $('#home').addClass('active');
-      window.location.assign("/");
-    });
+        $('#home').on('mousedown', function(e){
+        e.preventDefault();
+        $('.navclass').removeClass('active')
+        $('#home').addClass('active');
+        window.location.assign("/");
+        });
 
-    $('#login').on('mousedown', function(e){
-      e.preventDefault();
-      $('.navclass').removeClass('active')
-      $('#login').addClass('active');
-      window.location.assign("/login");
-    });
+        $('#login').on('mousedown', function(e){
+        e.preventDefault();
+        $('.navclass').removeClass('active')
+        $('#login').addClass('active');
+        window.location.assign("/login");
+        });
 
-    $('#join').on('mousedown', function(e){
-      e.preventDefault();
-      $('.navclass').removeClass('active')
-      $('#join').addClass('active');
-      window.location.assign("/join");
-    });
+        $('#join').on('mousedown', function(e){
+        e.preventDefault();
+        $('.navclass').removeClass('active')
+        $('#join').addClass('active');
+        window.location.assign("/join");
+        });
 
-    $('#fileupload').on('mousedown', function(e){
-      e.preventDefault();
-      $('.navclass').removeClass('active')
-      $('#fileupload').addClass('active');
-      window.location.assign("/fileupload");
-    });
+        $('#fileupload').on('mousedown', function(e){
+        e.preventDefault();
+        $('.navclass').removeClass('active')
+        $('#fileupload').addClass('active');
+        window.location.assign("/fileupload");
+        });
 
     });
-    
   </script>
-</html>

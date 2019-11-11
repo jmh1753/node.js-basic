@@ -11,19 +11,20 @@ let database_query = require('./Database/database_query');
 /* GET home page. */
 router.get('/', async(req, res, next) =>{
   const memberAll = await database_query.memberAll();
-  console.log('memberAll : ' + JSON.stringify(memberAll));
-  console.log('memberAll.length : ' + memberAll.length);
-  res.render('index', { 'page': 'home', 'memberAll' : memberAll });
+  const page = 'home';
+  res.render('index', { 'page': page, 'memberAll' : memberAll });
 });
 
 
 router.get('/login', function(req, res, next) {
-  res.render('login', { page: 'login' });
+  const page = 'login';
+  res.render('index', { 'page': page });
 });
 
 
 router.get('/join', async(req, res, next) => {
-  res.render('join', { page: 'join' });
+  const page = 'join';
+  res.render('index', { 'page': page });
 });
 
 router.post('/join', async(req, res, next) =>{
@@ -37,46 +38,13 @@ router.post('/join', async(req, res, next) =>{
     console.log('else부분');
     res.send({result:'id중복'});
   }
-
-
 });
 
 
 router.get('/fileupload', function(req, res, next) {
-  res.render('fileupload', { page: 'fileupload' });
+  const page = 'fileupload';
+  res.render('index', { 'page': page });
 });
-
-
-router.get('/edit', function(req, res, next){
-  res.render('product/edit', {
-    title : "Express~"
-  });
-});
-
-
-
-
-router.post('/test1234', async(req, res)=>{
-  const test1234 = await database_query.test(test);
-
-  //ex1
-  res.render('test/test/test', {
-    'message' : test1234
-  });
-
-  //ex2
-  res.send('success');
-
-  //ex3
-  res.json({
-    '1' : '1',
-    'message' : test1234,
-    '3' : '3'
-  });
-
-});
-
-
 
 
 module.exports = router;
