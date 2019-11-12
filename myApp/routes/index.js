@@ -47,4 +47,9 @@ router.get('/fileupload', function(req, res, next) {
 });
 
 
+router.get('/board', async(req, res, next) => {
+  const page = 'board';
+  res.render('index', { 'page': page });
+});
+
 module.exports = router;

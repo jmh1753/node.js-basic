@@ -54,5 +54,12 @@
       window.location.assign("/fileupload");
     });
 
+    $('#board').on('mousedown', function(e){
+      e.preventDefault();
+      $('.navclass').removeClass('active')
+      $('#board').addClass('active');
+      window.location.assign("/board");
+    });
+
     });
 </script>
