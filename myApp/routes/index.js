@@ -22,6 +22,15 @@ router.get('/login', function(req, res, next) {
 });
 
 
+router.post('/login', function(req, res, next) {
+  let id = req.body.id;
+  let password = req.body.password;
+  console.log('id : ' + id);
+  console.log('password : ' + password);
+  res.send({result:'로그인성공'});
+});
+
+
 router.get('/join', async(req, res, next) => {
   const page = 'join';
   res.render('index', { 'page': page });
